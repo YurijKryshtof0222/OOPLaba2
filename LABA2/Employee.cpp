@@ -22,12 +22,12 @@ int Employee::getExp()
 	return exp;
 }
 
-int Employee::getWorkedDays()
+int Employee::getWorkedDaysPerMonth()
 {
 	return workedDaysPerMonth;
 }
 
-int Employee::getDaysPerMonth()
+int Employee::getWorkingDaysPerMonth()
 {
 	return workingDaysPerMonth;
 }
@@ -67,7 +67,7 @@ void Employee::setSalary(int salary)
 	}
 }
 
-void Employee::setWorkedDays(int workedDays)
+void Employee::setWorkedDaysPerMonth(int workedDays)
 {
 	if (workedDays > 0)
 	{
@@ -75,7 +75,7 @@ void Employee::setWorkedDays(int workedDays)
 	}
 }
 
-void Employee::setDaysPerMonth(int daysPerMonth)
+void Employee::setWorkingDaysPerMonth(int daysPerMonth)
 {
 	if (daysPerMonth > 0)
 	{
@@ -88,5 +88,13 @@ void Employee::setMaintenance(int m)
 	if (m > 0)
 	{
 		this->maintenance = m;
+	}
+}
+
+void Employee::setAccrual(int a)
+{
+	if (a > 0)
+	{
+		this->accrual = a;
 	}
 }

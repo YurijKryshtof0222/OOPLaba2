@@ -12,7 +12,10 @@ void showMenu();
 string inputFullName();
 void addEmployee();
 void removeEmployee();
+void showEmployee();
 void showMenu();
+void setProportiesMenu(Employee employeeName);
+void setProporties(Employee employeeName);
 
 Wage employeesWageList = Wage();
 
@@ -69,11 +72,11 @@ void showMenu()
 			break;
 		case (5):
 			cout << "\tGoodbye!" << endl;
-			s = false;
+			state = false;
 			printContour();
 			break;
 		default:
-			cout << "Incorrect command!" << endl;
+			cout << "\tIncorrect command!" << endl;
 			printContour();
 			break;
 		}
@@ -110,7 +113,7 @@ void addEmployee()
 	} 
 	else
 	{
-		int salary, exp, workedDays, daysPerMonth, maintenance;
+		int salary, exp, workedDays, daysPerMonth, maintenance, accrual;
 		cout << "Enter salary: ";
 		cin >> salary;
 		cout << "Enter work expirience: ";
@@ -121,9 +124,11 @@ void addEmployee()
 		cin >> daysPerMonth;
 		cout << "Enter maintenance: ";
 		cin >> maintenance;
+		cout << "Enter accrual: ";
+		cin >> accrual;
 		
 		employeesWageList.add(
-			Employee(fullname, salary, exp, workedDays, daysPerMonth, maintenance)
+			Employee(fullname, salary, exp, workedDays, daysPerMonth, maintenance, accrual)
 		);
 	}
 
@@ -148,19 +153,85 @@ void showEmployee()
 	cout << "Enter employee's fullname: ";
 	getline(cin, fullname);
 
-	employeesWageList.show(fullname);
+	employeesWageList.findByNameAndSetPriorities(fullname);
 }
 
-void setProporties()
+void Wage::findByNameAndSetPriorities(std::string employeeName)
 {
-	bool state = true;
+	for (auto iter = employees.begin(); iter != employees.end(); iter++)
+	{
+		auto& tempEmployee = *iter;
+		if (tempEmployee.getFullName() == employeeName)
+		{
+			show(tempEmployee);
+			setProportiesMenu(tempEmployee);
+			return;
+		}
+	}
+	printException(employeeName);
+
+}
+
+void setProportiesMenu(Employee employee)
+{
 	cout << "Would you change some proporties?(y/n) : ";
-	char ans;
-	cin >> ans;
+	char ans; cin >> ans;
 	if (ans == 'y')
 	{
-
+		setProporties(employee);
 	}
-
 }
 
+void setProporties(Employee employee)
+{
+	cin.ignore();
+	bool status = true;
+	while (status)
+	{
+		cout << "1.)Salary: " << endl;
+		cout << "2.)Work experience: " << endl;
+		cout << "3.)Worked days per month: " << endl;
+		cout << "4.)Working days per month: " << endl;
+		cout << "5.)Maintaince: " << endl;
+		cout << "6.)Accrual: " << endl;
+		cout << "7.)Apply" << endl << endl;
+
+		cout << "	Your action: ";
+		int n; cin >> n;
+		int value;
+		switch (n)
+		{
+		case(1):
+			cout << "Enter salary: "; cin >> value;
+			employee.setSalary(value);
+			break;
+		case(2):
+			cout << "Enter work expirience: "; cin >> value;
+			employee.setExp(value);
+			break;
+		case(3):
+			cout << "Enter worked days per month: "; cin >> value;
+			employee.setWorkedDaysPerMonth(value);
+			break;
+		case(4):
+			cout << "Enter working days per month: "; cin >> value;
+			employee.setWorkingDaysPerMonth(value);
+			break;
+		case(5):
+			cout << "Enter maintenance: "; cin >> value;
+			employee.setMaintenance(value);
+			break;
+		case(6):
+			cout << "Enter accrual: "; cin >> value;
+			employee.setAccrual(value);
+			break;
+		case(7):
+			status = false;
+			break;
+		default:
+			cout << "Incorrect command!" << endl;
+		}
+	}
+
+
+}

@@ -57,7 +57,7 @@ int Wage::getProfit(std::string employeeName)
 	} 
 	catch (int) 
 	{
-		printException();
+
 	}
 
 }
@@ -71,16 +71,16 @@ void Wage::show(Employee employee)
 	cout << employee.getFullName()		<< endl;
 	cout << "Salary: "					<< employee.getSalary() << endl;
 	cout << "Work experience: "			<< employee.getExp() << endl;
-	cout << "Worked days per month: "	<< employee.getWorkedDays() << endl;
-	cout << "Working days per month: "	<< employee.getDaysPerMonth() << endl;
-	cout << "Maintaince: "				<< employee.getMaintenance() << endl;
+	cout << "Worked days per month: "	<< employee.getWorkedDaysPerMonth() << endl;
+	cout << "Working days per month: "	<< employee.getWorkingDaysPerMonth() << endl;
+	cout << "Maintenance: "				<< employee.getMaintenance() << endl;
 	cout << "Accrual: "					<< employee.getAccrual() << endl;
 	cout << "Wage: "					<< employee.getWage() << endl;
 	cout << "Profit: "					<< getProfit(employee.getFullName()) << endl;
 	util::printContour();
 }
 
-void Wage::show(std::string employeeName)
+void Wage::findByName(std::string employeeName)
 {
 	for (auto iter = employees.begin(); iter != employees.end(); iter++)
 	{

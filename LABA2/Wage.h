@@ -15,7 +15,8 @@ public:
 	void set			(std::string oldEmployeeName, Employee newEmployee);
 	void remove			(std::string employeeName);
 	int  getProfit		(std::string employeeName);
-	void show			(std::string employee);
+	void findByName		(std::string employee);
+	void findByNameAndSetPriorities	(std::string employee);
 	void showAll();
 
 	~Wage();

@@ -9,7 +9,7 @@ private:
 	int id;
 	std::string fullName;
 
-	int salary = 12000;					//оклад Ч щом≥с€чний розм≥р погодинноњ оплати прац≥
+	int salary;					//оклад Ч щом≥с€чний розм≥р погодинноњ оплати прац≥
 	int exp = 2;						//стаж роботи
 	int workedDaysPerMonth = 23;		//к≥льк≥сть в≥дпрацьованих дн≥в
 	int workingDaysPerMonth = 20;		//к≥льк≥сть робочих дн≥в у м≥с€ц≥
@@ -23,16 +23,17 @@ public:
 
 	int getSalary();
 	int getExp();
-	int getWorkedDays();
-	int getDaysPerMonth();
+	int getWorkedDaysPerMonth();
+	int getWorkingDaysPerMonth();
 	int getAccrual();
 	int getMaintenance();
 
 	void setSalary(int salary);
 	void setExp(int exp);
-	void setWorkedDays(int workedDays);
-	void setDaysPerMonth(int daysPerMonth);
+	void setWorkedDaysPerMonth(int workedDays);
+	void setWorkingDaysPerMonth(int daysPerMonth);
 	void setMaintenance(int maintenance);
+	void setAccrual(int accrual);
 
 	Employee
 	(
@@ -41,6 +42,7 @@ public:
 	{
 		this->id = employeesCounter++;
 		this->fullName = fullName;
+		this->salary = 12000;
 	}
 
 	Employee
@@ -50,14 +52,16 @@ public:
 		int exp,
 		int workedDays,
 		int daysPerMonth,
-		int maintance
+		int maintance,
+		int accrual
 	) : Employee(fullName)
 	{
 		setSalary(salary);
 		setExp(exp);
-		setWorkedDays(workedDays);
-		setDaysPerMonth(daysPerMonth);
+		setWorkedDaysPerMonth(workedDays);
+		setWorkingDaysPerMonth(daysPerMonth);
 		setMaintenance(maintance);
+		setAccrual(accrual);
 	}
 
 };
