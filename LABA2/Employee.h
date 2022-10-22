@@ -49,16 +49,16 @@ public:
 		std::string fullName,
 		int salary,
 		int exp,
-		int workedDays,
-		int daysPerMonth,
+		int workedDaysPerMonth,
+		int workingDaysPerMonth,
 		int maintance,
 		int accrual
 	) : Employee(fullName)
 	{
 		setSalary(salary);
 		setExp(exp);
-		setWorkedDaysPerMonth(workedDays);
-		setWorkingDaysPerMonth(daysPerMonth);
+		setWorkedDaysPerMonth(workedDaysPerMonth);
+		setWorkingDaysPerMonth(workingDaysPerMonth);
 		setMaintenance(maintance);
 		setAccrual(accrual);
 	}

@@ -37,8 +37,8 @@ int Employee::getWage()
 	if (workedDaysPerMonth > 0)
 	{
 		return (int) (salary 
-			* workingDaysPerMonth 
-			/ workedDaysPerMonth 
+			* workedDaysPerMonth 
+			/ workingDaysPerMonth 
 			* (1 + exp * 0.1));
 	}
 	return 0;

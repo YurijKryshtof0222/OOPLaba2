@@ -121,7 +121,7 @@ void addEmployee()
 		cin >> salary;
 		cout << "Enter work expirience: ";
 		cin >> exp;
-		cout << "Enter worked days: ";
+		cout << "Enter worked days per month: ";
 		cin >> workedDaysPerMonth;
 		cout << "Enter working days per month: ";
 		cin >> workingDaysPerMonth;
@@ -195,7 +195,7 @@ void setProporties(Employee &employee)
 		cout << "2.)Work experience: " << endl;
 		cout << "3.)Worked days per month: " << endl;
 		cout << "4.)Working days per month: " << endl;
-		cout << "5.)Maintaince: " << endl;
+		cout << "5.)Maintenance: " << endl;
 		cout << "6.)Accrual: " << endl << endl;
 		cout << "7.)Apply" << endl << endl;
 
