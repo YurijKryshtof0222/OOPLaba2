@@ -18,7 +18,7 @@
   </tr>
   
   <tr>
-    <td><a href = "https://github.com/YurijKryshtof0222/OOPLaba2/blob/master/LABA2/Employee.h">Employee.cpp</a></td>
+    <td><a href = "https://github.com/YurijKryshtof0222/OOPLaba2/blob/master/LABA2/Employee.cpp">Employee.cpp</a></td>
     <td>.cpp файл з класом Співробітник і реалізацією її методів</td>
   </tr>
   
@@ -28,7 +28,7 @@
   </tr>
   
   <tr>
-    <td><a href = "https://github.com/YurijKryshtof0222/OOPLaba2/blob/master/LABA2/Wage.h">Wage.cpp</a></td>
+    <td><a href = "https://github.com/YurijKryshtof0222/OOPLaba2/blob/master/LABA2/Wage.cpp">Wage.cpp</a></td>
     <td>.cpp файл з класом Зарплата і реалізацією її методів</td>
   </tr>
   
