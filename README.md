@@ -48,7 +48,7 @@
   </tr>
 </table>
 
-<h2>Скріншот виконання програми</h1>
+<h2>Скріншоти демонстрації виконання програми</h1>
 
 ![image](https://user-images.githubusercontent.com/105464154/197337936-195fb8fd-be30-4c18-8a7d-98556c8cd4b1.png)
 ![image](https://user-images.githubusercontent.com/105464154/197338153-560531a7-9790-44ba-ba06-ae0955db9b32.png)
