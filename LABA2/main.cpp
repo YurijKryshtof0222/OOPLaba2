@@ -12,20 +12,21 @@ void showMenu();
 string inputFullName();
 void addEmployee();
 void removeEmployee();
-void showEmployee();
+void findEmployeeAndSetProperties();
 void showMenu();
-void setProportiesMenu(Employee employeeName);
-void setProporties(Employee employeeName);
+void setProporties(Employee &employeeName);
 
 Wage employeesWageList = Wage();
 
-int main()
+//Точка входу
+int main() 
 {
 	cout << setfill('-') << setw(30) << "Accountant Demo" << setw(15) << "" << endl;
 	util::printContour();
 	showMenu();
 }
 
+//Головне меню 
 void showMenu()
 {
 	bool state = true;
@@ -36,11 +37,11 @@ void showMenu()
 		cout << "	Choose your action" << endl;
 		cout << "1.)Add employee" << endl;
 		cout << "2.)Remove employee" << endl;
-		cout << "3.)Show employee info by fullname" << endl;
-		cout << "4.)Show all employees" << endl;
+		cout << "3.)Find employee and set properties" << endl;
+		cout << "4.)Show all employees" << endl << endl;
 		cout << "5.)Exit" << endl;
 
-		cout << "Your action: ";
+		cout << "	Your action: ";
 		cin >> action;
 		cout << endl;
 
@@ -59,9 +60,9 @@ void showMenu()
 			printContour();
 			break;
 		case (3):
-			cout << "\tShow employee info by fullname" << endl;
+			cout << "\tFind employee and set properties" << endl;
 			printContour();
-			showEmployee();
+			findEmployeeAndSetProperties();
 			printContour();
 			break;
 		case (4):
@@ -85,6 +86,7 @@ void showMenu()
 
 }
 
+//Пропонує ввести ПІБ доки введене поле не буде пустим
 string inputFullName()
 {
 	string fullname;
@@ -101,39 +103,42 @@ string inputFullName()
 	return fullname;
 }
 
+//Меню добавлення у список нового співробітника 
+//і введеня даних щодо його зарплати і тд.
 void addEmployee() 
 {
 	string fullname = inputFullName();
 	cout << "Set other values by default?(y/n) :";
-	char ans;
-	cin >> ans;
+	char ans; cin >> ans;
 	if (ans == 'y') 
 	{
 		employeesWageList.add(Employee(fullname));
 	} 
 	else
 	{
-		int salary, exp, workedDays, daysPerMonth, maintenance, accrual;
+		int salary, exp, workedDaysPerMonth, workingDaysPerMonth, maintenance, accrual;
 		cout << "Enter salary: ";
 		cin >> salary;
 		cout << "Enter work expirience: ";
 		cin >> exp;
 		cout << "Enter worked days: ";
-		cin >> workedDays;
+		cin >> workedDaysPerMonth;
 		cout << "Enter working days per month: ";
-		cin >> daysPerMonth;
+		cin >> workingDaysPerMonth;
 		cout << "Enter maintenance: ";
 		cin >> maintenance;
 		cout << "Enter accrual: ";
 		cin >> accrual;
 		
 		employeesWageList.add(
-			Employee(fullname, salary, exp, workedDays, daysPerMonth, maintenance, accrual)
+			Employee(
+				fullname, salary, exp, workedDaysPerMonth, workingDaysPerMonth, maintenance, accrual)
 		);
 	}
 
 }
 
+//Меню вилучення співробітника зі списку
 void removeEmployee()
 {
 	string fullname;
@@ -145,7 +150,8 @@ void removeEmployee()
 	employeesWageList.remove(fullname);
 }
 
-void showEmployee()
+//Меню пошуку спіпробітника за ПІБ і редагування даних про його зарплату і тд
+void findEmployeeAndSetProperties()
 {
 	string fullname;
 
@@ -153,18 +159,24 @@ void showEmployee()
 	cout << "Enter employee's fullname: ";
 	getline(cin, fullname);
 
-	employeesWageList.findByNameAndSetPriorities(fullname);
+	employeesWageList.findByNameAndSetProporties(fullname);
 }
 
-void Wage::findByNameAndSetPriorities(std::string employeeName)
+//Пошуку спіпробітника за ПІБ і редагування даних про його зарплату і тд.
+void Wage::findByNameAndSetProporties(std::string employeeName)
 {
 	for (auto iter = employees.begin(); iter != employees.end(); iter++)
 	{
-		auto& tempEmployee = *iter;
-		if (tempEmployee.getFullName() == employeeName)
+		auto& employee = *iter;
+		if (employee.getFullName() == employeeName)
 		{
-			show(tempEmployee);
-			setProportiesMenu(tempEmployee);
+			employeesWageList.show(employee);
+			cout << "Would you change some proporties?(y/n) : ";
+			char ans; cin >> ans;
+			if (ans == 'y')
+			{
+				setProporties(employee);
+			}
 			return;
 		}
 	}
@@ -172,17 +184,8 @@ void Wage::findByNameAndSetPriorities(std::string employeeName)
 
 }
 
-void setProportiesMenu(Employee employee)
-{
-	cout << "Would you change some proporties?(y/n) : ";
-	char ans; cin >> ans;
-	if (ans == 'y')
-	{
-		setProporties(employee);
-	}
-}
-
-void setProporties(Employee employee)
+//Меню редагування даних співробітника про зарплату і не тільки
+void setProporties(Employee &employee)
 {
 	cin.ignore();
 	bool status = true;
@@ -193,7 +196,7 @@ void setProporties(Employee employee)
 		cout << "3.)Worked days per month: " << endl;
 		cout << "4.)Working days per month: " << endl;
 		cout << "5.)Maintaince: " << endl;
-		cout << "6.)Accrual: " << endl;
+		cout << "6.)Accrual: " << endl << endl;
 		cout << "7.)Apply" << endl << endl;
 
 		cout << "	Your action: ";
@@ -232,6 +235,5 @@ void setProporties(Employee employee)
 			cout << "Incorrect command!" << endl;
 		}
 	}
-
 
 }

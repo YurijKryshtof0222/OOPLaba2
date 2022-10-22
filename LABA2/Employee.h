@@ -9,7 +9,7 @@ private:
 	int id;
 	std::string fullName;
 
-	int salary;					//оклад Ч щом≥с€чний розм≥р погодинноњ оплати прац≥
+	int salary = 12000;					//оклад Ч щом≥с€чний розм≥р погодинноњ оплати прац≥
 	int exp = 2;						//стаж роботи
 	int workedDaysPerMonth = 23;		//к≥льк≥сть в≥дпрацьованих дн≥в
 	int workingDaysPerMonth = 20;		//к≥льк≥сть робочих дн≥в у м≥с€ц≥
@@ -40,9 +40,8 @@ public:
 		std::string fullName
 	)
 	{
-		this->id = employeesCounter++;
+		this->id = employeesCounter++ + 1;
 		this->fullName = fullName;
-		this->salary = 12000;
 	}
 
 	Employee

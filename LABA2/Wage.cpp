@@ -42,24 +42,17 @@ void Wage::remove(std::string employeeName)
 
 int Wage::getProfit(std::string employeeName)
 {
-	try {
-		for (auto iter = employees.begin(); iter != employees.end(); iter++)
-		{
-			auto& tempEmployee = *iter;
-			if (tempEmployee.getFullName() == employeeName)
-			{
-				return tempEmployee.getWage()
-					+ tempEmployee.getAccrual()
-					- tempEmployee.getMaintenance();
-			}
-		}
-		throw(-1);
-	} 
-	catch (int) 
+	for (auto iter = employees.begin(); iter != employees.end(); iter++)
 	{
-
+		auto& tempEmployee = *iter;
+		if (tempEmployee.getFullName() == employeeName)
+		{
+			return tempEmployee.getWage()
+				+ tempEmployee.getAccrual()
+				- tempEmployee.getMaintenance();
+		}
+		return 0;
 	}
-
 }
 
 void Wage::show(Employee employee)
